@@ -1,0 +1,10 @@
+<app-filter></app-filter>
+
+<mat-tab-group mat-align-tabs="center">
+  <mat-tab label="Cheap"></mat-tab>
+  <mat-tab label="Fast"></mat-tab>
+  <mat-tab label="Optimum"></mat-tab>
+</mat-tab-group>
+
+<app-flight-item *ngFor="let flight of flights" [flight]="flight">
+</app-flight-item>

@@ -1,0 +1,55 @@
+
+.fly-search {
+    &__container {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        flex-shrink: 1;
+        align-items: center;
+        margin: 50px auto;
+        background-color: $fly-color--white;
+        border-radius: 5px;
+        padding: 10px 20px;
+
+        @include respond(tab-port) {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+
+    &__row {
+        margin-right: 15px;
+
+        @include respond(tab-port) {
+            margin-bottom: 15px;
+        }
+    }
+
+    &__select {
+        min-width: 190px;
+    }
+}
+
+.fly-user {
+    &__container {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: left;
+        padding: 0px 35px;
+    }
+
+    // &__row {
+
+    // }
+
+    &__button {
+        max-width: 150px;
+        margin-left: auto; 
+        align-self: flex-end;
+    }
+
+    &__container > * {
+        margin: 5px 15px;
+    }
+}

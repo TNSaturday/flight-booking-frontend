@@ -1,0 +1,13 @@
+.fly-text {
+    &--grey {
+        color: $fly-color--grey;
+    }
+
+    &--red {
+        color: $fly-color--red;
+    }
+
+    &--bold {
+        font-weight: 600;
+    }
+}

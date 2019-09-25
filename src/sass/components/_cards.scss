@@ -1,0 +1,83 @@
+.mdc-card {
+    margin-bottom: 15px;
+}
+
+.fly-card {
+    &__container {
+        display: flex;
+        flex-direction: column;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    &__row {
+        padding: 10px 25px;  
+    }
+
+    &__element {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    &__element *:not(:last-child){
+        margin-right: 30px;
+    }
+    
+    &__logo {
+        width: 25px;
+        height: auto;
+        margin-right: 5px;
+    }
+
+    &__logo img {
+        width: 25px;
+        height: auto;
+    }
+}
+
+.fly-card-detail {
+    &__card {
+        min-height: 80vh;
+        padding: 50px 0;
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 15px 35px;
+    }
+
+    &__container:not(:last-of-type) {
+        border-bottom: 1px solid $fly-color--lightgrey;
+    }
+
+    &__container *:not(:last-child) {
+        margin-bottom: 5px;
+    }
+
+    &__row {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        align-items: center;  
+    }
+
+    &__row *:not(:last-child):not(.fly-card-detail__logo)  {
+        margin-right: 30px;
+    }
+
+    &__logo {
+        width: 25px;
+        height: auto;
+        margin-right: 5px;
+    }
+
+    &__logo img {
+        width: 25px;
+        height: auto;
+    }
+}

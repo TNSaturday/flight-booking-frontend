@@ -1,0 +1,86 @@
+<section class="signup-form" [class.mat-elevation-z2]="true">
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)"
+    fxLayout="column" fxLayoutAlign="start start">
+    <h1>Search your flight!</h1>
+      <div class="container"  
+        fxLayout.lt-md="column" fxLayoutAlign="center center" fxLayoutGap="10px">
+        <mat-form-field>
+            <input 
+              type="text" 
+              matInput 
+              placeholder="From"
+              ngModel
+              name="from"
+              required
+              #fromInput="ngModel">
+              <mat-icon matSuffix>flight_takeoff</mat-icon>
+            <mat-error *ngIf="fromInput.hasError('required')">
+              Field can not be empty!
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input 
+              type="text" 
+              matInput 
+              placeholder="Where"
+              ngModel
+              name="where"
+              required
+              #whereInput="ngModel">
+              <mat-icon matSuffix>flight_landing</mat-icon>
+            <mat-error *ngIf="whereInput.hasError('required')">
+              Field can not be empty!
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input 
+              matInput
+              [matDatepicker]="pickerDep"
+              [min]="minDate"
+              [max]="maxDate"
+              placeholder="Departure Date" 
+              ngModel
+              name="departureDate"
+              required>
+            <mat-datepicker-toggle matSuffix [for]="pickerDep"></mat-datepicker-toggle>
+            <mat-datepicker #pickerDep>
+            </mat-datepicker>
+          </mat-form-field>
+      </div>
+      <div class="container"  
+        fxLayout.lt-md="column" fxLayoutAlign="start center" fxLayoutGap="10px">
+        <mat-form-field>
+          <input 
+            matInput
+            [matDatepicker]="pickerArr"
+            placeholder="Return Date"
+            [min]="minDate"
+            [max]="maxDate"
+            ngModel
+            name="arrivalDate"
+            required>
+          <mat-datepicker-toggle matSuffix [for]="pickerArr"></mat-datepicker-toggle>
+          <mat-datepicker #pickerArr>
+          </mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Class</mat-label>
+          <mat-select name="class" ngModel required>
+            <mat-option *ngFor="let class of classes" [value]="class">
+              {{class}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button 
+        type="submit" 
+        mat-raised-button 
+        color="primary"
+        [disabled]="f.invalid">Search</button>
+        <!-- <button 
+        type="button" 
+        mat-raised-button 
+        color="accent">
+        Filter</button> -->
+      </div>    
+  </form>
+</section>

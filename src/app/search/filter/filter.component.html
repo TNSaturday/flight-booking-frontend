@@ -1,0 +1,83 @@
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Search Filter
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <section class="search-filter">
+      <form fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10px"
+        #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <label for="transfer">Transfers</label>
+        <mat-checkbox 
+          color="primary"
+          ngModel 
+          name="transfer"
+          value="0" 
+          required>Direct</mat-checkbox>
+        <mat-checkbox 
+          color="primary"
+          ngModel 
+          name="transfer"
+          value="1" 
+          required>1</mat-checkbox>
+          <mat-checkbox 
+          color="primary"
+          ngModel 
+          name="transfer"
+          value="2" 
+          required>2</mat-checkbox>
+    
+        <label for="luggage">Luggage</label>
+        <mat-checkbox 
+          color="primary"
+          ngModel 
+          name="luggage"
+          value="no_luggage" 
+          required>No luggage</mat-checkbox>
+        <mat-checkbox 
+          color="primary"
+          ngModel 
+          name="luggage"
+          value="hand_luggage" 
+          required>Hand luggage only</mat-checkbox>
+        <mat-checkbox 
+          color="primary"
+          ngModel 
+          name="luggage"
+          value="luggage" 
+          required>Luggage</mat-checkbox>
+    
+        <label for="departureTime">Departure</label>
+        <mat-slider
+          thumbLabel
+          name="departureTime"
+          tickInterval="1"
+          min="0"
+          max="24"></mat-slider>
+    
+        <label for="departureTime">Arrival</label>
+        <mat-slider
+          thumbLabel
+          name="arrivalTime"
+          tickInterval="1"
+          min="0"
+          max="24"></mat-slider>
+    
+        <label for="departureTime">Transfer duration</label>
+        <mat-slider
+          thumbLabel
+          name="departureTime"
+          tickInterval="1"
+          min="0"
+          max="24"></mat-slider>
+    
+        <button 
+          type="submit" 
+          mat-raised-button 
+          color="primary"
+          [disabled]="f.invalid">Apply</button>
+      </form>
+    </section>
+  </mat-expansion-panel>
+</mat-accordion>
