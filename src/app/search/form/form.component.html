@@ -22,13 +22,13 @@
             <input 
               type="text" 
               matInput 
-              placeholder="Where"
+              placeholder="To"
               ngModel
-              name="where"
+              name="to"
               required
-              #whereInput="ngModel">
+              #toInput="ngModel">
               <mat-icon matSuffix>flight_landing</mat-icon>
-            <mat-error *ngIf="whereInput.hasError('required')">
+            <mat-error *ngIf="toInput.hasError('required')">
               Field can not be empty!
             </mat-error>
           </mat-form-field>

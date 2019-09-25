@@ -12,4 +12,3 @@ export interface SearchFlightForm {
   to: string;
   departure: string;
 }
-
