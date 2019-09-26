@@ -23,6 +23,8 @@ import { NewTrainingComponent } from './test/new-training/new-training.component
 import { PastTrainingComponent } from './test/past-training/past-training.component';
 import { AdminComponent } from './admin/admin.component';
 import { AuthService } from './auth/auth.service';
+import { AddFlightComponent } from './admin/add-flight/add-flight.component';
+import { AddCompanyComponent } from './admin/add-company/add-company.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { AuthService } from './auth/auth.service';
     CurrentTrainingComponent,
     NewTrainingComponent,
     PastTrainingComponent,
-    AdminComponent
+    AdminComponent,
+    AddFlightComponent,
+    AddCompanyComponent,
   ],
   imports: [
     BrowserModule,

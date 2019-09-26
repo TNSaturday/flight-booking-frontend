@@ -1,9 +1,48 @@
 <section class="signup-form" [class.mat-elevation-z2]="true">
   <form #f="ngForm" (ngSubmit)="onSubmit(f)"
-    fxLayout="column" fxLayoutAlign="start start">
-    <h1>Search your flight!</h1>
+    fxLayout="column" fxLayoutAlign="center">
+    <h1>Add a flight!</h1>
       <div class="container"  
         fxLayout.lt-md="column" fxLayoutAlign="center center" fxLayoutGap="10px">
+        <mat-form-field>
+          <input 
+            type="text" 
+            matInput 
+            placeholder="Name"
+            ngModel
+            name="name"
+            required
+            #fromInput="ngModel">
+          <mat-error *ngIf="nameInput.hasError('required')">
+            Field can not be empty!
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input 
+            type="text" 
+            matInput 
+            placeholder="Company"
+            ngModel
+            name="company"
+            required
+            #fromInput="ngModel">
+          <mat-error *ngIf="companyInput.hasError('required')">
+            Field can not be empty!
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input 
+            type="text" 
+            matInput 
+            placeholder="Price"
+            ngModel
+            name="price"
+            required
+            #fromInput="ngModel">
+          <mat-error *ngIf="priceInput.hasError('required')">
+            Field can not be empty!
+          </mat-error>
+        </mat-form-field>
         <mat-form-field>
             <input 
               type="text" 
@@ -65,9 +104,9 @@
         </mat-form-field>
         <mat-form-field>
           <mat-label>Class</mat-label>
-          <mat-select name="privilege" ngModel required>
-            <mat-option *ngFor="let privilege of privileges" [value]="privilege">
-              {{privilege}}
+          <mat-select name="class" ngModel required>
+            <mat-option *ngFor="let class of classes" [value]="class">
+              {{class}}
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -75,7 +114,7 @@
         type="submit" 
         mat-raised-button 
         color="primary"
-        [disabled]="f.invalid">Search</button>
+        [disabled]="f.invalid">Add</button>
       </div>    
   </form>
 </section>

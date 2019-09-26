@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class FormComponent implements OnInit {
   // Two way field
   // twoWay = false;
-  classes = ['Economy', 'First', 'Business'];
+  privileges = ['Economy', 'First', 'Business'];
   today = new Date();
   halfYear = new Date(this.today.getTime() + 180 * 24 * 60 * 60 * 1000);
   minDate = this.today;
@@ -21,14 +21,16 @@ export class FormComponent implements OnInit {
   constructor(private flightService: FlightService, private router: Router) { }
 
   ngOnInit() {
+    // console.log(this.flightService.x());
   }
 
   onSubmit(form: NgForm) {
     const searchForm = form.value as SearchFlightForm;
-
-    this.flightService.performSearch(searchForm);
-    // this.flightService.performSearch(form);
-    this.router.navigate(['/flights']);
+    console.log(this.flightService.getRoute(searchForm));
+    // this.flightService.getRoute(searchForm);
+    // console.log(this.flightService.getCityCode(searchForm.from));
+    // this.flightService.performSearch(searchForm);
+    // this.router.navigate(['/flights']);
       // .subscribe(
       //   () => {
       //     router.navigate('/results');
