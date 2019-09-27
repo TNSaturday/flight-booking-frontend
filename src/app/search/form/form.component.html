@@ -74,8 +74,12 @@
         <button 
         type="submit" 
         mat-raised-button 
-        color="primary"
-        [disabled]="f.invalid">Search</button>
+        color="primary">Search</button>
       </div>    
   </form>
 </section>
+<div *ngIf="flights">
+  <app-flight-item *ngFor="let flight of flights" [flight]="flight">
+  </app-flight-item>
+</div>
+<!-- [disabled]="f.invalid" MUST BE IN THE SUBMIT BUTTON -->

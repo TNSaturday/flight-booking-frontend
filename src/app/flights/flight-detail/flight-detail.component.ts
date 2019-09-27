@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FlightService } from '../flight.service';
 
 @Component({
   selector: 'app-flight-detail',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./flight-detail.component.scss']
 })
 export class FlightDetailComponent implements OnInit {
-
-  constructor() { }
+  flight;
+  constructor(private flightService: FlightService) { }
 
   ngOnInit() {
+    this.getData();
   }
 
+  getData(): void {
+    this.flight = this.flightService.returnSelectedFlight();
+  }
 }

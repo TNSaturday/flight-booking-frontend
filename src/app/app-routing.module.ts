@@ -7,6 +7,7 @@ import { TestComponent } from './test/test.component';
 import { FilterComponent } from './search/filter/filter.component';
 import { FlightsComponent } from './flights/flights.component';
 import { AdminComponent } from './admin/admin.component';
+import { FlightDetailComponent } from './flights/flight-detail/flight-detail.component';
 
 
 
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'filter', component: FilterComponent},
   {path: 'admin', component: AdminComponent},
   {path: 'test', component: TestComponent},
+  {path: 'details', component: FlightDetailComponent},
 ];
 
 @NgModule({

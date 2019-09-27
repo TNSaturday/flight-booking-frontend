@@ -9,15 +9,17 @@ import { Flight } from './flight.model';
 })
 export class FlightsComponent implements OnInit {
   flights: Flight[];
+  route;
   constructor(private flightService: FlightService) {
-   }
+  }
 
   ngOnInit() {
     this.getFlights();
-    // console.log(this.flights);
+    console.log(this.flights);
   }
 
-  getFlights(): void {
-    this.flights = this.flightService.getSearchResults();
+  getFlights(): any {
+    // return this.route = this.flightService.getFlightRoute();
+    this.flights = this.flightService.getFlights();
   }
 }

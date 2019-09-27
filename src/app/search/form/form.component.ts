@@ -17,19 +17,15 @@ export class FormComponent implements OnInit {
   halfYear = new Date(this.today.getTime() + 180 * 24 * 60 * 60 * 1000);
   minDate = this.today;
   maxDate = this.halfYear;
+  flights;
 
   constructor(private flightService: FlightService, private router: Router) { }
 
-  ngOnInit() {
-    // console.log(this.flightService.x());
-  }
+  ngOnInit() {}
 
   onSubmit(form: NgForm) {
     const searchForm = form.value as SearchFlightForm;
-    console.log(this.flightService.getRoute(searchForm));
-    // this.flightService.getRoute(searchForm);
-    // console.log(this.flightService.getCityCode(searchForm.from));
-    // this.flightService.performSearch(searchForm);
+    this.flights = this.flightService.getRoute(searchForm);
     // this.router.navigate(['/flights']);
       // .subscribe(
       //   () => {

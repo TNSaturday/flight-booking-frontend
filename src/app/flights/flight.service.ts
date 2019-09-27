@@ -40,7 +40,8 @@ export class FlightService {
   ];
   flights: Flight[];
   searchResults: Flight[];
-  routes: IRoute[];
+  transfer: IRoute[];
+  selectedFlight: IRoute[];
 
   constructor() {
     this.flights = [
@@ -68,17 +69,20 @@ export class FlightService {
     ];
   }
 
+  selectFlight(obj) {
+    this.selectedFlight = obj;
+  }
+  returnSelectedFlight() {
+    return this.selectedFlight;
+  }
+
   getFlights(): Flight[] {
     return this.flights;
   }
 
-  // performSearch(): Flight[] {
-  //   this.searchResults = this.flights.filter(flight => {
-  //     return flight.depCity === 'Voronezh';
-  //   });
-  //   // return this.flights;
-  //   return this.searchResults;
-  // }
+  getFlightRoute(): IRoute[] {
+    return this.transfer;
+  }
 
   performSearch(dep, arr): Flight[] {
     this.searchResults = this.flights.filter(el => {
@@ -99,12 +103,9 @@ export class FlightService {
     return codeObj[0].code;
   }
 
-  x() {
-    return this.performSearch('LED', 'DME');
-  }
   getRoute(form, matrix: DeparturesFromCity[] = this.flightMatrix) {
-    const routes = new Array();
-    const transferArr = new Array();
+    const routes = [];
+    // const transferArr = [];
     const depCode = this.getCityCode(form.from); // LED
     const arrCode = this.getCityCode(form.to); // VVO
     // Transfer 0
@@ -114,42 +115,92 @@ export class FlightService {
       return null;
     }
 
-    transfer0[0].arrival.forEach(transfer0Code => { // ['DME', 'SVX'] 
+    transfer0[0].arrival.forEach(transfer0Code => { // ['DME', 'SVX']
       if (transfer0Code === arrCode) {
         if (this.performSearch(depCode, arrCode).length > 0) {
-          transferArr.push(this.performSearch(depCode, arrCode));
-          // const route = {};
-          // route.flights.push(this.performSearch(depCode, arrCode)));
-          // route.transfers = 1;
-          // route.depCity=form.from;
-          // route.depTime= взять из найденного рейса
-          // route.arrCity= form.to
-          // route.arrTime=взять из найденного рейса
-          // route.duration=route.arrTime - route.depTime
-          // routes.push(route);
+          // -----------------------------------------
+          // Use this if createRoute functions breaks
+          // -----------------------------------------
+          const flights = this.performSearch(depCode, arrCode);
+          const transfers = 0;
+          const depCity = form.from;
+          const depTime = flights[0].depTime;
+          const arrCity = form.to;
+          const arrTime = flights[0].arrTime;
+          const duration = arrTime.getTime() - depTime.getTime();
+          const route: IRoute = {
+            flights,
+            transfers,
+            depCity,
+            depTime,
+            arrCity,
+            arrTime,
+            duration
+          };
+          // -----------------------------------------
+          routes.push(route);
         }
       } else {
           const transfer1 = matrix.filter(element => element.departure === transfer0Code); // ['LED', 'OVB', 'SVX', 'CEK', 'VOZ']
           transfer1[0].arrival.forEach(transfer1Code => {
             if (transfer1Code === arrCode) {
-              if ((this.performSearch(depCode, transfer0Code).length > 0 ) &&
-                 (this.performSearch(transfer0Code, arrCode).length > 0)) {
-                transferArr.push(
-                  this.performSearch(depCode, transfer0Code),
-                  this.performSearch(transfer0Code, arrCode));
+              const flight1 = this.performSearch(depCode, transfer0Code);
+              const flight2 = this.performSearch(transfer0Code, arrCode);
+              if ((flight1.length > 0 ) &&
+                 (flight2.length > 0)) {
+                  const flights = [
+                    flight1[0],
+                    flight2[0]];
+                  const transfers = 1;
+                  const depCity = form.from;
+                  const depTime = flights[0].depTime;
+                  const arrCity = form.to;
+                  const arrTime = flights[1].arrTime;
+                  const duration = arrTime.getTime() - depTime.getTime();
+                  const route: IRoute = {
+                    flights,
+                    transfers,
+                    depCity,
+                    depTime,
+                    arrCity,
+                    arrTime,
+                    duration
+                  };
+                  // -----------------------------------------
+                  routes.push(route);
               }
             } else {
               const transfer2 = matrix.filter(element => element.departure === transfer1Code); // ['LED', 'OVB', 'SVX', 'CEK', 'VOZ']
               transfer2[0].arrival.forEach(transfer2Code => {
                 if (transfer2Code === arrCode) {
+                  const flight1 = this.performSearch(depCode, transfer0Code);
+                  const flight2 = this.performSearch(transfer0Code, transfer1Code);
+                  const flight3 = this.performSearch(transfer1Code, arrCode);
                   // tslint:disable-next-line: max-line-length
-                  if (this.performSearch(depCode, transfer0Code).length > 0 &&
-                      this.performSearch(transfer0Code, transfer1Code).length > 0 &&
-                      this.performSearch(transfer1Code, arrCode).length > 0 ) {
-                    transferArr.push(
-                      this.performSearch(depCode, transfer0Code),
-                      this.performSearch(transfer0Code, transfer1Code),
-                      this.performSearch(transfer1Code, arrCode));
+                  if (flight1.length > 0 &&
+                      flight2.length > 0 &&
+                      flight3.length > 0 ) {
+                        const flights = [
+                          flight1[0],
+                          flight2[0],
+                          flight3[0]];
+                        const transfers = 2;
+                        const depCity = form.from;
+                        const depTime = flights[0].depTime;
+                        const arrCity = form.to;
+                        const arrTime = flights[2].arrTime;
+                        const duration = arrTime.getTime() - depTime.getTime();
+                        const route: IRoute = {
+                          flights,
+                          transfers,
+                          depCity,
+                          depTime,
+                          arrCity,
+                          arrTime,
+                          duration
+                        };
+                        // -----------------------------------------
+                        routes.push(route);
                   }
                 }
             });
@@ -157,47 +208,7 @@ export class FlightService {
           });
         }
     });
-
-    // for (const [key, value] of Object.entries(transfer0[0].arrival)) { // ['DME', 'SVX']
-    //   console.log(typeof(transfer0[0].arrival));
-    //   if (value === arrCode) {
-    //     if (this.performSearch(depCode, arrCode)) {
-    //       transferArr.push(
-    //         this.performSearch(depCode, arrCode));
-    //     }
-    //   } else {
-    //     // Transfer 1
-    //     const transfer1 = matrix.filter(element => element.departure === value);
-    //     for (const [key1, value1] of Object.entries(transfer1[0].arrival)) {
-    //       if (value1 === arrCode) {
-    //         const result1 = this.performSearch(depCode, value);
-    //         const result2 = this.performSearch(value, arrCode);
-    //         if (result1.length > 0 && result2.length > 0) {
-    //           transferArr.push(
-    //             this.performSearch(depCode, value1),
-    //             this.performSearch(value1, arrCode));
-    //         }
-    //       } else {
-    //         // Transfer 2
-    //         const transfer2 = matrix.filter(element => element.departure === value1);
-    //         for (const [key2, value2] of Object.entries(transfer2[0].arrival)) {
-    //           if (value2 === arrCode) {
-    //             const result1 = this.performSearch(depCode, value);
-    //             const result2 = this.performSearch(value, value1);
-    //             const result3 = this.performSearch(value1, arrCode);
-    //             console.log('pare1' + depCode, value1, '; pare2' + value1, value2, '; pare3' + value2, arrCode);
-    //             if (result1.length > 0 && result2.length > 0 && result3.length > 0) {
-    //               transferArr.push(
-    //                 this.performSearch(depCode, value1),
-    //                 this.performSearch(value1, value2),
-    //                 this.performSearch(value2, arrCode));
-    //             }
-    //           }
-    //         }
-    //       }
-    //     }
-    //   }
-    // }
-    return transferArr.length > 0 ? transferArr : null;
+    this.transfer = routes;
+    return routes.length > 0 ? routes : null;
   }
 }
