@@ -17,10 +17,6 @@ import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
 import { FormComponent } from './search/form/form.component';
 import { FilterComponent } from './search/filter/filter.component';
-import { TestComponent } from './test/test.component';
-import { CurrentTrainingComponent } from './test/current-training/current-training.component';
-import { NewTrainingComponent } from './test/new-training/new-training.component';
-import { PastTrainingComponent } from './test/past-training/past-training.component';
 import { AdminComponent } from './admin/admin.component';
 import { AuthService } from './auth/auth.service';
 import { AddFlightComponent } from './admin/add-flight/add-flight.component';
@@ -40,10 +36,6 @@ import { AddCompanyComponent } from './admin/add-company/add-company.component';
     SidenavListComponent,
     FormComponent,
     FilterComponent,
-    TestComponent,
-    CurrentTrainingComponent,
-    NewTrainingComponent,
-    PastTrainingComponent,
     AdminComponent,
     AddFlightComponent,
     AddCompanyComponent,
