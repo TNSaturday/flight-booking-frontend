@@ -44,28 +44,30 @@
           </div>
         </div>
         <div *ngIf="selectedRoute show">
-          <mat-divider></mat-divider>
-          <div *ngFor="let flight of flights">
-            <div 
-              class="card-row" 
-              fxLayout="row" 
-              fxLayoutAlign="space-between">
-              <p class="bold">{{ flight.name }}</p>
-              <p class="bold">{{  flight.price }} ₽</p>
-            </div>
-            <div 
-              class="card-row" 
-              fxLayout="row" 
-              fxLayoutAlign="space-between">
-              <p>{{ flight.depCode }}</p>
-              <p>{{  flight.arrCode }}</p>
-            </div>
-            <div 
-              class="card-row" 
-              fxLayout="row" 
-              fxLayoutAlign="space-between">
-              <p>{{ flight.depCity }}</p>
-              <p>{{  flight.arrCity }}</p>
+          <div *ngIf="route === selectedRoute">
+            <mat-divider></mat-divider>
+            <div *ngFor="let flight of flights">
+              <div 
+                class="card-row" 
+                fxLayout="row" 
+                fxLayoutAlign="space-between">
+                <p class="bold">{{ flight.name }}</p>
+                <p class="bold">{{  flight.price }} ₽</p>
+              </div>
+              <div 
+                class="card-row" 
+                fxLayout="row" 
+                fxLayoutAlign="space-between">
+                <p>{{ flight.depCode }}</p>
+                <p>{{  flight.arrCode }}</p>
+              </div>
+              <div 
+                class="card-row" 
+                fxLayout="row" 
+                fxLayoutAlign="space-between">
+                <p>{{ flight.depCity }}</p>
+                <p>{{  flight.arrCity }}</p>
+              </div>
             </div>
           </div>
         </div>
@@ -76,9 +78,8 @@
         fxLayout="row" 
         fxLayoutAlign="end">
         <button mat-button>Book</button>
-        <!-- <button mat-button (click)="showFlights(route)" *ngIf="!show">Details</button> -->
-        <button mat-raised-button (click)="showFlights(route)" *ngIf="!show">Details</button>
-        <button mat-button (click)="closeFlights()" *ngIf="show">Close</button>
+        <button mat-button (click)="showFlights(route)" *ngIf="show">Details</button>
+        <button mat-button (click)="closeFlights()" *ngIf="route === selectedRoute">Close</button>
       </mat-card-actions>
     </mat-card>
   </section>

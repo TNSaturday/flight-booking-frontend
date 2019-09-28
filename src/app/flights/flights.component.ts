@@ -9,7 +9,7 @@ import { Flight } from './flight.model';
   styleUrls: ['./flights.component.scss']
 })
 export class FlightsComponent implements OnInit {
-  public show = false;
+  public show = true;
   routes;
   selectedRoute;
   flights;
@@ -27,13 +27,13 @@ export class FlightsComponent implements OnInit {
   }
 
   showFlights(route): void {
-    this.show = !this.show;
+    // this.show = !this.show;
     this.selectedRoute = route;
     this.flights = this.selectedRoute.flights;
   }
 
   closeFlights(): void {
-    this.show = !this.show;
+    // this.show = !this.show;
     this.selectedRoute = null;
   }
 }
