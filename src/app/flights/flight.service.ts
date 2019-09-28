@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Flight } from './flight.model';
-import { SearchFlightForm } from '../search/form/SearchFlightForm';
 interface DeparturesFromCity {
   departure: string;
   arrival: string[];
 }
 
-interface IRoute {
+export interface IRoute {
   flights: Flight[];
   transfers: number;
   depCity: string;

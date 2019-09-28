@@ -8,7 +8,6 @@ import { MaterialModule } from './material.module';
 import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
 import { FlightsComponent } from './flights/flights.component';
-import { FlightItemComponent } from './flights/flight-item/flight-item.component';
 import { FlightDetailComponent } from './flights/flight-detail/flight-detail.component';
 import { FlightOrderComponent } from './flights/flight-order/flight-order.component';
 import { WelcomeComponent } from './welcome/welcome.component';
@@ -28,7 +27,6 @@ import { AddCompanyComponent } from './admin/add-company/add-company.component';
     SignupComponent,
     LoginComponent,
     FlightsComponent,
-    FlightItemComponent,
     FlightDetailComponent,
     FlightOrderComponent,
     WelcomeComponent,

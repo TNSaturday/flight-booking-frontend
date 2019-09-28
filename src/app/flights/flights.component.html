@@ -1,4 +1,4 @@
-<app-filter></app-filter>
+<!-- <app-filter></app-filter> -->
 
 <mat-tab-group mat-align-tabs="center">
   <mat-tab label="Cheap"></mat-tab>
@@ -6,5 +6,83 @@
   <mat-tab label="Optimum"></mat-tab>
 </mat-tab-group>
 
-<app-flight-item *ngFor="let flight of flights" [flight]="flight">
-</app-flight-item>
+<div *ngIf="routes">
+  <section 
+    *ngFor="let route of routes" 
+    class="route-item" 
+    fxLayout fxLayoutAlign="center">
+    <mat-card class="example-card">
+      <mat-card-header fxLayout fxLayoutAlign="start center">
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title fxLayout="row" fxLayoutAlign="space-between">
+          Airlines
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div>
+          <div 
+            class="card-row" 
+            fxLayout="row" 
+            fxLayoutAlign="space-between">
+            <p class="bold">{{ route.depTime | date: 'shortTime' }}</p>
+            <p class="bold">{{ route.arrTime | date: 'shortTime' }}</p>
+          </div>
+          <div 
+            class="card-row" 
+            fxLayout="row" 
+            fxLayoutAlign="space-between">
+            <p>{{ route.depCity }}</p>
+            <p>{{ route.arrCity }}</p>
+          </div>
+          <div 
+            class="card-row" 
+            fxLayout="row" 
+            fxLayoutAlign="end">
+            <p>3500 ₽</p>
+            <!-- Change for actual price calculation method -->
+            <!-- <p>{{ route.price }}</p> -->
+          </div>
+        </div>
+        <div *ngIf="selectedRoute show">
+          <mat-divider></mat-divider>
+          <div *ngFor="let flight of flights">
+            <div 
+              class="card-row" 
+              fxLayout="row" 
+              fxLayoutAlign="space-between">
+              <p class="bold">{{ flight.name }}</p>
+              <p class="bold">{{  flight.price }} ₽</p>
+            </div>
+            <div 
+              class="card-row" 
+              fxLayout="row" 
+              fxLayoutAlign="space-between">
+              <p>{{ flight.depCode }}</p>
+              <p>{{  flight.arrCode }}</p>
+            </div>
+            <div 
+              class="card-row" 
+              fxLayout="row" 
+              fxLayoutAlign="space-between">
+              <p>{{ flight.depCity }}</p>
+              <p>{{  flight.arrCity }}</p>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+      
+      <mat-card-actions  
+        class="card-row" 
+        fxLayout="row" 
+        fxLayoutAlign="end">
+        <button mat-button>Book</button>
+        <!-- <button mat-button (click)="showFlights(route)" *ngIf="!show">Details</button> -->
+        <button mat-raised-button (click)="showFlights(route)" *ngIf="!show">Details</button>
+        <button mat-button (click)="closeFlights()" *ngIf="show">Close</button>
+      </mat-card-actions>
+    </mat-card>
+  </section>
+  <br>
+</div>
+
+

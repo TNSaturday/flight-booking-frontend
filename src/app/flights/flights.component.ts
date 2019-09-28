@@ -2,24 +2,38 @@ import { Component, OnInit } from '@angular/core';
 import { FlightService } from './flight.service';
 import { Flight } from './flight.model';
 
+
 @Component({
   selector: 'app-flights',
   templateUrl: './flights.component.html',
   styleUrls: ['./flights.component.scss']
 })
 export class FlightsComponent implements OnInit {
-  flights: Flight[];
-  route;
-  constructor(private flightService: FlightService) {
+  public show = false;
+  routes;
+  selectedRoute;
+  flights;
+  constructor(
+    private flightService: FlightService) {
   }
 
   ngOnInit() {
-    this.getFlights();
-    console.log(this.flights);
+    this.getRoutes();
+    console.log(this.routes);
   }
 
-  getFlights(): any {
-    // return this.route = this.flightService.getFlightRoute();
-    this.flights = this.flightService.getFlights();
+  getRoutes(): any {
+    this.routes = this.flightService.getFlightRoute();
+  }
+
+  showFlights(route): void {
+    this.show = !this.show;
+    this.selectedRoute = route;
+    this.flights = this.selectedRoute.flights;
+  }
+
+  closeFlights(): void {
+    this.show = !this.show;
+    this.selectedRoute = null;
   }
 }
