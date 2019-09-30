@@ -10,6 +10,9 @@
       <li>
         <a routerLink="/flights">Flights</a>
       </li>
+      <li *ngIf="isAuth">
+        <a routerLink="/admin">Admin</a>
+      </li>
       <li *ngIf="!isAuth">
         <a routerLink="/signup">Signup</a>
       </li>
@@ -17,8 +20,8 @@
         <a routerLink="/login">Login</a>
       </li>
       <li *ngIf="isAuth">
-          <a routerLink="/login">Logout</a>
-        </li>
+        <a routerLink="/login">Logout</a>
+      </li>
     </ul>
   </div>
 </mat-toolbar>

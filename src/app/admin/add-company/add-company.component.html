@@ -1,6 +1,5 @@
 <section class="signup-form" [class.mat-elevation-z2]="true">
-  <form #f="ngForm" (ngSubmit)="onSubmit(f)"
-    fxLayout="column" fxLayoutAlign="center">
+  <form #f="ngForm" fxLayout="column" fxLayoutAlign="center">
     <h1>Add a company!</h1>
       <div class="container"  
         fxLayout.lt-md="column" fxLayoutAlign="center center" fxLayoutGap="10px">
@@ -13,7 +12,7 @@
           name="name"
           required
           #fromInput="ngModel">
-        <mat-error *ngIf="nameInput.hasError('required')">
+        <mat-error>
           Field can not be empty!
         </mat-error>
         </mat-form-field>
