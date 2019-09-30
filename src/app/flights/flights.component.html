@@ -38,9 +38,7 @@
             class="card-row" 
             fxLayout="row" 
             fxLayoutAlign="end">
-            <p>3500 ₽</p>
-            <!-- Change for actual price calculation method -->
-            <!-- <p>{{ route.price }}</p> -->
+            <p>{{ route.price }}</p>
           </div>
         </div>
         <div *ngIf="selectedRoute show">
@@ -77,7 +75,7 @@
         class="card-row" 
         fxLayout="row" 
         fxLayoutAlign="end">
-        <button mat-button>Book</button>
+        <button mat-button (click)="bookRoute(route)">Book</button>
         <button mat-button (click)="showFlights(route)" *ngIf="show">Details</button>
         <button mat-button (click)="closeFlights()" *ngIf="route === selectedRoute">Close</button>
       </mat-card-actions>

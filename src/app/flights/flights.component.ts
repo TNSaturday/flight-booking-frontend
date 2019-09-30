@@ -19,7 +19,7 @@ export class FlightsComponent implements OnInit {
 
   ngOnInit() {
     this.getRoutes();
-    console.log(this.routes);
+    // console.log(this.routes);
   }
 
   getRoutes(): any {
@@ -27,13 +27,15 @@ export class FlightsComponent implements OnInit {
   }
 
   showFlights(route): void {
-    // this.show = !this.show;
     this.selectedRoute = route;
     this.flights = this.selectedRoute.flights;
   }
 
   closeFlights(): void {
-    // this.show = !this.show;
     this.selectedRoute = null;
+  }
+
+  bookRoute(route): void {
+    console.log(`You are goind to book a flight from ${route.depCity} to ${route.arrCity} which costs ${route.price}`);
   }
 }

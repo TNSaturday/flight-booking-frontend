@@ -13,6 +13,7 @@ export interface IRoute {
   arrCity: string;
   arrTime: Date;
   duration: number;
+  price: number;
 }
 
 @Injectable({
@@ -127,6 +128,7 @@ export class FlightService {
           const arrCity = form.to;
           const arrTime = flights[0].arrTime;
           const duration = arrTime.getTime() - depTime.getTime();
+          const price = flights[0].price;
           const route: IRoute = {
             flights,
             transfers,
@@ -134,7 +136,8 @@ export class FlightService {
             depTime,
             arrCity,
             arrTime,
-            duration
+            duration,
+            price
           };
           // -----------------------------------------
           routes.push(route);
@@ -156,6 +159,7 @@ export class FlightService {
                   const arrCity = form.to;
                   const arrTime = flights[1].arrTime;
                   const duration = arrTime.getTime() - depTime.getTime();
+                  const price = flight1[0].price + flight2[0].price;
                   const route: IRoute = {
                     flights,
                     transfers,
@@ -163,7 +167,8 @@ export class FlightService {
                     depTime,
                     arrCity,
                     arrTime,
-                    duration
+                    duration,
+                    price
                   };
                   // -----------------------------------------
                   routes.push(route);
@@ -189,6 +194,7 @@ export class FlightService {
                         const arrCity = form.to;
                         const arrTime = flights[2].arrTime;
                         const duration = arrTime.getTime() - depTime.getTime();
+                        const price = flight1[0].price + flight2[0].price + flight3[0].price;
                         const route: IRoute = {
                           flights,
                           transfers,
@@ -196,7 +202,8 @@ export class FlightService {
                           depTime,
                           arrCity,
                           arrTime,
-                          duration
+                          duration,
+                          price
                         };
                         // -----------------------------------------
                         routes.push(route);
