@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FlightService } from './flight.service';
 import { Flight } from './flight.model';
+import { Router } from '@angular/router';
+import { OrderService } from './order.service';
+import { OrderForm } from './order.model';
 
 
 @Component({
@@ -13,8 +16,7 @@ export class FlightsComponent implements OnInit {
   routes;
   selectedRoute;
   flights;
-  constructor(
-    private flightService: FlightService) {
+  constructor(private flightService: FlightService, private router: Router, private orderService: OrderService) {
   }
 
   ngOnInit() {
@@ -36,6 +38,8 @@ export class FlightsComponent implements OnInit {
   }
 
   bookRoute(route): void {
-    console.log(`You are goind to book a flight from ${route.depCity} to ${route.arrCity} which costs ${route.price}`);
+    this.orderService.bookOrder(route);
+    this.router.navigate(['order']);
+    // console.log(`You are goind to book a flight from ${route.depCity} to ${route.arrCity} which costs ${route.price}`);
   }
 }

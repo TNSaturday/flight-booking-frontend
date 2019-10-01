@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Ticket } from '../ticket.model';
+import { OrderService } from '../order.service';
+import { OrderForm } from '../order.model';
 
 @Component({
   selector: 'app-flight-order',
@@ -13,9 +16,21 @@ export class FlightOrderComponent implements OnInit {
     new Ticket(1, '2A', 'Ручная кладь + Багаж'),
     new Ticket(1, '4B', 'Без багажа'),
   ];
-  constructor() { }
+  order;
+  constructor(private orderService: OrderService) { }
 
   ngOnInit() {
+    this.order = this.orderService.order;
+    console.log(this.order);
+  }
+
+  bookOrder(order) {
+    console.log(`You are goind to book a flight from ${order.depCity} to ${order.arrCity} which costs ${order.price}`);
+  }
+
+  onSubmit(form: NgForm) {
+    const searchForm = form.value as OrderForm;
+    console.log(searchForm);
   }
 
 }
