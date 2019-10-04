@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Ticket } from '../ticket.model';
 import { OrderService } from '../order.service';
 import { OrderForm } from '../order.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-flight-order',
@@ -19,7 +20,7 @@ export class FlightOrderComponent implements OnInit {
   order;
   client;
   orderBooked = false;
-  constructor(private orderService: OrderService) { }
+  constructor(private orderService: OrderService, private router: Router) { }
 
   ngOnInit() {
     this.order = this.orderService.order;

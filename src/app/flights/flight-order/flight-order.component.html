@@ -134,17 +134,18 @@
     </mat-card>
   </div>
   <div *ngIf="orderBooked">
-      <h1>
-        Registaration completed
-      </h1>
-      <h3>
-        You were succesfully registered to fligh from {{ order.depCity }} to {{ order.arrCity }}.
-      </h3>
-      <!-- <mat-card>
-        <p>Flight from: </p>
-        <p>successfully booked for: {{ client.fName }} {{ client.sName }}</p>
-        <p>passport data: {{ client.passport }}</p>
-      </mat-card> -->
+      <h4>
+        Registration completed!
+      </h4>
+      <p>
+        You succesfully registered to flight from {{ order.depCity }} to {{ order.arrCity }}.
+      </p>
+      <p>
+        Booked for: {{ client.fName }} {{ client.sName }}
+      </p>
+      <p>
+        Passport data: {{ client.passport }}
+      </p>
   </div>
 </div>
 
