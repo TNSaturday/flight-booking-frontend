@@ -8,13 +8,21 @@ import { Router } from '@angular/router';
 export class AuthService {
   authChange = new Subject<boolean>();
   private user: User;
+  private admin: User;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+    this.admin = {
+      email: 'tnsaturday@gmail.com',
+      userId: '1',
+      role: 'admin'
+    };
+  }
 
   registerUser(authData: AuthData) {
     this.user = {
       email: authData.email,
       userId: (Math.round(Math.random() * 100000)).toString(),
+      role: 'user'
     };
     this.authChange.next(true);
   }
@@ -23,6 +31,7 @@ export class AuthService {
     this.user = {
       email: authData.email,
       userId: (Math.round(Math.random() * 100000)).toString(),
+      role: 'user'
     };
     this.authChange.next(true);
   }

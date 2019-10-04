@@ -30,11 +30,6 @@ export class FlightsComponent implements OnInit {
       this.routesEmpty = false;
       this.routesByTime = this.routes.sort((a, b) => (a.duration > b.duration) ? 1 : -1);
       this.routesByPrice = this.routes.sort((a, b) => (a.price > b.price) ? 1 : -1);
-      console.log('By duration: ', this.routesByTime);
-      console.log('By price: ', this.routesByPrice);
-      // this.routesByTime.forEach(route => {
-      //   console.log(route.price, route.duration);
-      // });
     }
   }
 
