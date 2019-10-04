@@ -13,7 +13,10 @@ import { OrderForm } from './order.model';
 })
 export class FlightsComponent implements OnInit {
   public show = true;
-  routes;
+  routes = [];
+  routesByTime = [];
+  routesByPrice = [];
+  routesEmpty = false;
   selectedRoute;
   flights;
   constructor(private flightService: FlightService, private router: Router, private orderService: OrderService) {
@@ -21,7 +24,18 @@ export class FlightsComponent implements OnInit {
 
   ngOnInit() {
     this.getRoutes();
-    // console.log(this.routes);
+    if (this.routes === null || this.routes === undefined || this.routes.length === 0 ) {
+      this.routesEmpty = true;
+    } else {
+      this.routesEmpty = false;
+      this.routesByTime = this.routes.sort((a, b) => (a.duration > b.duration) ? 1 : -1);
+      this.routesByPrice = this.routes.sort((a, b) => (a.price > b.price) ? 1 : -1);
+      console.log('By duration: ', this.routesByTime);
+      console.log('By price: ', this.routesByPrice);
+      // this.routesByTime.forEach(route => {
+      //   console.log(route.price, route.duration);
+      // });
+    }
   }
 
   getRoutes(): any {
@@ -40,6 +54,7 @@ export class FlightsComponent implements OnInit {
   bookRoute(route): void {
     this.orderService.bookOrder(route);
     this.router.navigate(['order']);
-    // console.log(`You are goind to book a flight from ${route.depCity} to ${route.arrCity} which costs ${route.price}`);
   }
+
+
 }

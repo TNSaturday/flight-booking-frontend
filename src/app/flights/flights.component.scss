@@ -1,5 +1,9 @@
 .example-card {
   min-width: 400px;
+  @media only screen and (max-width: 375px) { 
+    min-width: 300px;
+    max-width: 350px;
+   }; 
 }
 
 .example-header-image {

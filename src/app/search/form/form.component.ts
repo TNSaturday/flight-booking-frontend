@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./form.component.scss']
 })
 export class FormComponent implements OnInit {
-  privileges = ['Economy', 'First', 'Business'];
+  privileges = ['Economy', 'Business'];
   today = new Date();
   halfYear = new Date(this.today.getTime() + 180 * 24 * 60 * 60 * 1000);
   minDate = this.today;
@@ -23,6 +23,7 @@ export class FormComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     const searchForm = form.value as SearchFlightForm;
+    this.flightService.clearState();
     this.flights = this.flightService.getRoute(searchForm);
     this.router.navigate(['flights']);
   }

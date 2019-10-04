@@ -17,20 +17,19 @@ export class FlightOrderComponent implements OnInit {
     new Ticket(1, '4B', 'Без багажа'),
   ];
   order;
+  client;
+  orderBooked = false;
   constructor(private orderService: OrderService) { }
 
   ngOnInit() {
     this.order = this.orderService.order;
-    console.log(this.order);
-  }
-
-  bookOrder(order) {
-    console.log(`You are goind to book a flight from ${order.depCity} to ${order.arrCity} which costs ${order.price}`);
   }
 
   onSubmit(form: NgForm) {
-    const searchForm = form.value as OrderForm;
-    console.log(searchForm);
+    this.client = form.value as OrderForm;
+    this.orderBooked = true;
+    console.log(this.client);
+    console.log(this.order);
   }
 
 }

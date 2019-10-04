@@ -1,11 +1,17 @@
 <!-- <app-filter></app-filter> -->
 
-<mat-tab-group mat-align-tabs="center">
-  <mat-tab label="Cheap"></mat-tab>
-  <mat-tab label="Fast"></mat-tab>
-  <mat-tab label="Optimum"></mat-tab>
+<mat-tab-group *ngIf="!routesEmpty" mat-align-tabs="center">
+  <mat-tab label="Cheap">
+    <p fxLayout fxLayoutAlign="center">Sorted by Price</p>
+  </mat-tab>
+  <mat-tab label="Fast">
+    <p fxLayout fxLayoutAlign="center">Sorted by Duration</p>
+  </mat-tab>
 </mat-tab-group>
 
+<div *ngIf="routesEmpty" fxLayout fxLayoutAlign="center">
+  <h2>No flights found!</h2>
+</div>
 <div *ngIf="routes">
   <section 
     *ngFor="let route of routes" 
@@ -83,5 +89,3 @@
   </section>
   <br>
 </div>
-
-
