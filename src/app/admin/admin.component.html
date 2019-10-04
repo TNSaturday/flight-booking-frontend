@@ -38,13 +38,13 @@
   </ng-container>
 
   <ng-container matColumnDef="Departure Date/Time">
-    <th mat-header-cell *matHeaderCellDef> Departure Date/Time</th>
-    <td mat-cell *matCellDef="let flight"> {{flight.depTime | date: ''}} </td>
+    <th mat-header-cell *matHeaderCellDef> Departure Date</th>
+    <td mat-cell *matCellDef="let flight"> {{flight.depTime | date}} </td>
   </ng-container>
 
   <ng-container matColumnDef="Arrival Date/Time">
-    <th mat-header-cell *matHeaderCellDef> Arrival Date/Time</th>
-    <td mat-cell *matCellDef="let flight"> {{flight.arrCode}} </td>
+    <th mat-header-cell *matHeaderCellDef> Arrival Date</th>
+    <td mat-cell *matCellDef="let flight"> {{flight.arrTime | date}} </td>
   </ng-container>
 
   <ng-container matColumnDef="Price">
