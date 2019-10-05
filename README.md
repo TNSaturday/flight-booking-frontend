@@ -1,3 +1,5 @@
+# All eligible flights, respective departure, arrival cities and respective dates are accessible on flights page. This panel has only desktop version.
+
 # FlightBooking
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.2.
@@ -13,8 +15,7 @@ Run `npm i` to install dependences.
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Cases
-This project is written entirely in English. Therefore, to search for flights use Engish names of the cities. All eligible flights, respective departure, arrival cities and respective dates are accessible in flights panel. This panel has only
-desktop version.
+This project is written entirely in English. Therefore, to search for flights use Engish names of the cities. 
 
 ### Login
 Authorization is done via email. Admin page has only desktop version.
