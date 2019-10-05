@@ -13,15 +13,11 @@ Run `npm i` to install dependences.
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Cases
-This project is written in English language. To search flights use Engish names of the cities.
-Search Saint-Petersburg - Moscow, Saint-Petersburg - Vladivostok to look at flight examples.
+This project is written entirely in English. Therefore, to search for flights use Engish names of the cities. All eligible flights, respective departure, arrival cities and respective dates are accessible in flights panel. This panel has only
+desktop version.
 
 ### Login
-Authorization is accessible by only by email.
-To login as admin use login "admin" password "admin". 
-To see all existing flights navigate to "/admin".
-To add flight navigate to '/addflight' or use button in navbar.
-Admin page has only desktop version.
+Authorization is done via email. Admin page has only desktop version.
 
 ## Code scaffolding
 
