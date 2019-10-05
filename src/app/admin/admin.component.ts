@@ -33,10 +33,6 @@ export class AdminComponent implements OnInit {
     const newArray = this.flights.filter( el => el.id !== flight.id );
     this.flightsString = JSON.stringify(newArray);
     this.flightStorage.setItem('flights', this.flightsString);
-    console.log(newArray);
-    // this.router.navigateByUrl('/admin', {skipLocationChange: true}).then(() => {
-    //   this.router.navigate(['/admin']);
-    // });
     location.reload();
   }
 }
