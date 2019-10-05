@@ -7,9 +7,13 @@
     <mat-icon>input</mat-icon>
     <span class="nav-caption">Login</span>
   </a>
-  <a mat-list-item routerLink="/flights" (click)="onClose()">
+  <a mat-list-item routerLink="/admin" (click)="onClose()">
     <mat-icon>flight_takeoff</mat-icon>
     <span class="nav-caption">Flights</span>
+  </a>
+  <a mat-list-item routerLink="/addflight" (click)="onClose()">
+    <mat-icon>flight_takeoff</mat-icon>
+    <span class="nav-caption">Add Flight</span>
   </a>
   <mat-list-item *ngIf="isAuth">
     <button mat-icon-button (click)="onClose()">

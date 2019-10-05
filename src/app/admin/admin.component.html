@@ -1,11 +1,3 @@
-<!-- <mat-tab-group mat-align-tabs="center">
-  <mat-tab label="Add flight">
-    <app-add-flight></app-add-flight>
-  </mat-tab>
-  <mat-tab label="Add company">
-    <app-add-company></app-add-company>
-  </mat-tab>
-</mat-tab-group> -->
 <table mat-table [dataSource]="flights">
   <ng-container matColumnDef="Id">
     <th mat-header-cell *matHeaderCellDef> Id </th>
@@ -57,6 +49,23 @@
     <td mat-cell *matCellDef="let flight"> {{flight.duration}} </td>
   </ng-container>
 
+  <ng-container matColumnDef="Actions">
+    <th mat-header-cell *matHeaderCellDef>Actions </th>
+    <td mat-cell *matCellDef="let flight">
+      <button 
+        mat-icon-button matTooltip="Click to Edit" 
+        class="iconbutton" color="primary"
+        (click)="editFlight(flight)">
+          <mat-icon aria-label="Edit">edit</mat-icon>
+        </button>
+      <button 
+        mat-icon-button matTooltip="Click to Delete" 
+        class="iconbutton" color="warn"
+        (click)="deleteFlight(flight)">
+          <mat-icon aria-label="Delete">delete</mat-icon>
+        </button>
+    </td>
+  </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

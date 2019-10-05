@@ -16,6 +16,13 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 This project is written in English language. To search flights use Engish names of the cities.
 Search Saint-Petersburg - Moscow, Saint-Petersburg - Vladivostok to look at flight examples.
 
+### Login
+Authorization is accessible by only by email.
+To login as admin use login "admin" password "admin". 
+To see all existing flights navigate to "/admin".
+To add flight navigate to '/addflight' or use button in navbar.
+Admin page has only desktop version.
+
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.

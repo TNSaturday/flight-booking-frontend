@@ -8,7 +8,10 @@
   <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
     <ul fxLayout fxLayoutGap="10px" class="navigation-items">
       <li>
-        <a routerLink="/flights">Flights</a>
+        <a routerLink="/admin">Flights</a>
+      </li>
+      <li>
+        <a routerLink="/addflight">Add flight</a>
       </li>
       <li *ngIf="isAuth">
         <a routerLink="/admin">Admin</a>

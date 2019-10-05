@@ -11,14 +11,18 @@ export class AdminComponent implements OnInit {
   flights: Flight[];
   displayedColumns: string[] = [
     'Id', 'Name', 'From', 'From Code', 'To', 'To Code',
-    'Departure Date/Time', 'Arrival Date/Time', 'Price', 'Duration'];
+    'Departure Date/Time', 'Arrival Date/Time', 'Price', 'Duration', 'Actions'];
   constructor() {
     this.flights = flights;
   }
 
-  ngOnInit() {
-    flights.forEach(flight => {
-      console.log(flight);
-    });
+  ngOnInit() { }
+
+  editFlight(flight) {
+    console.log(flight);
+  }
+
+  deleteFlight(flight) {
+    console.log(flight);
   }
 }
