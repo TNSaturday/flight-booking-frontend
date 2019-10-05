@@ -64,7 +64,7 @@ export class FlightService {
       new Flight(6, 'S7', '74', 6400, 110,
         'Moscow', 'DME', new Date(2019, 9, 4, 15, 20),
         'Chelyabinsk', 'CEK', new Date(2019, 9, 4, 17, 10)),
-      new Flight(7, 'S7' ,'25', 9315, 240,
+      new Flight(7, 'S7', '25', 9315, 240,
         'Chelyabinsk', 'CEK', new Date(2019, 9, 4, 15, 20),
         'Vladivostok', 'VVO', new Date(2019, 9, 4, 19, 20)),
       new Flight(8, 'S7', '78', 3115, 90,
@@ -149,7 +149,6 @@ export class FlightService {
   getRoute(form, matrix: DeparturesFromCity[] = this.flightMatrix) {
     this.clearState();
     const routes = [];
-    // const transferArr = [];
     const depCode = this.getCityCode(form.from); // LED
     const arrCode = this.getCityCode(form.to); // VVO
 
