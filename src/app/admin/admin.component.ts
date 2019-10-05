@@ -13,7 +13,7 @@ export class AdminComponent implements OnInit {
   flightsString: string;
   flightStorage;
   displayedColumns: string[] = [
-    'Id', 'Name', 'From', 'From Code', 'To', 'To Code',
+    'Id', 'Company', 'Name', 'From', 'From Code', 'To', 'To Code',
     'Departure Date/Time', 'Arrival Date/Time', 'Price', 'Duration', 'Actions'];
   constructor(private router: Router) {
     this.flightStorage = window.localStorage;

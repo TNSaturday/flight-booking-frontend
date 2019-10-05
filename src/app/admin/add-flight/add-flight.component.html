@@ -1,120 +1,107 @@
 <section class="signup-form" [class.mat-elevation-z2]="true">
-  <form #f="ngForm" (ngSubmit)="onSubmit(f)"
-    fxLayout="column" fxLayoutAlign="center">
+  <form 
+    fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px"
+    #f="ngForm" (ngSubmit)="onSubmit(f)">
     <h1>Add a flight!</h1>
-      <div class="container"  
-        fxLayout.lt-md="column" fxLayoutAlign="center center" fxLayoutGap="10px">
-        <mat-form-field>
-          <input 
-            type="text" 
-            matInput 
-            placeholder="Name"
-            ngModel
-            name="name"
-            required
-            #fromInput="ngModel">
-          <mat-error *ngIf="nameInput.hasError('required')">
-            Field can not be empty!
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field>
-          <input 
-            type="text" 
-            matInput 
-            placeholder="Company"
-            ngModel
-            name="company"
-            required
-            #fromInput="ngModel">
-          <mat-error *ngIf="companyInput.hasError('required')">
-            Field can not be empty!
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field>
-          <input 
-            type="text" 
-            matInput 
-            placeholder="Price"
-            ngModel
-            name="price"
-            required
-            #fromInput="ngModel">
-          <mat-error *ngIf="priceInput.hasError('required')">
-            Field can not be empty!
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field>
-            <input 
-              type="text" 
-              matInput 
-              placeholder="From"
-              ngModel
-              name="from"
-              required
-              #fromInput="ngModel">
-              <mat-icon matSuffix>flight_takeoff</mat-icon>
-            <mat-error *ngIf="fromInput.hasError('required')">
-              Field can not be empty!
-            </mat-error>
-          </mat-form-field>
-          <mat-form-field>
-            <input 
-              type="text" 
-              matInput 
-              placeholder="To"
-              ngModel
-              name="to"
-              required
-              #toInput="ngModel">
-              <mat-icon matSuffix>flight_landing</mat-icon>
-            <mat-error *ngIf="toInput.hasError('required')">
-              Field can not be empty!
-            </mat-error>
-          </mat-form-field>
-          <mat-form-field>
-            <input 
-              matInput
-              [matDatepicker]="pickerDep"
-              [min]="minDate"
-              [max]="maxDate"
-              placeholder="Departure Date" 
-              ngModel
-              name="departureDate"
-              required>
-            <mat-datepicker-toggle matSuffix [for]="pickerDep"></mat-datepicker-toggle>
-            <mat-datepicker #pickerDep>
-            </mat-datepicker>
-          </mat-form-field>
-      </div>
-      <div class="container"  
-        fxLayout.lt-md="column" fxLayoutAlign="start center" fxLayoutGap="10px">
-        <mat-form-field>
-          <input 
-            matInput
-            [matDatepicker]="pickerArr"
-            placeholder="Return Date"
-            [min]="minDate"
-            [max]="maxDate"
-            ngModel
-            name="arrivalDate"
-            required>
-          <mat-datepicker-toggle matSuffix [for]="pickerArr"></mat-datepicker-toggle>
-          <mat-datepicker #pickerArr>
-          </mat-datepicker>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Class</mat-label>
-          <mat-select name="class" ngModel required>
-            <mat-option *ngFor="let class of classes" [value]="class">
-              {{class}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <button 
-        type="submit" 
-        mat-raised-button 
-        color="primary"
-        [disabled]="f.invalid">Add</button>
-      </div>    
+    <mat-form-field>
+      <input 
+        type="text" 
+        matInput 
+        placeholder="Name"
+        ngModel
+        name="name"
+        required
+        #nameInput="ngModel">
+      <mat-error *ngIf="nameInput.hasError('required')">
+        Field can not be empty!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input 
+        type="text" 
+        matInput 
+        placeholder="Company"
+        ngModel
+        name="company"
+        required
+        #companyInput="ngModel">
+      <mat-error *ngIf="companyInput.hasError('required')">
+        Field can not be empty!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input 
+        type="text" 
+        matInput 
+        placeholder="Price"
+        ngModel
+        name="price"
+        required
+        #priceInput="ngModel">
+      <mat-error *ngIf="priceInput.hasError('required')">
+        Field can not be empty!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+    <input 
+      type="text" 
+      matInput 
+      placeholder="From"
+      ngModel
+      name="from"
+      required
+      #fromInput="ngModel">
+      <mat-icon matSuffix>flight_takeoff</mat-icon>
+    <mat-error *ngIf="fromInput.hasError('required')">
+      Field can not be empty!
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input 
+      type="text" 
+      matInput 
+      placeholder="To"
+      ngModel
+      name="to"
+      required
+      #toInput="ngModel">
+      <mat-icon matSuffix>flight_landing</mat-icon>
+    <mat-error *ngIf="toInput.hasError('required')">
+      Field can not be empty!
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input 
+      matInput
+      [matDatepicker]="pickerDep"
+      [min]="minDate"
+      [max]="maxDate"
+      placeholder="Departure Date" 
+      ngModel
+      name="departureDate"
+      required>
+    <mat-datepicker-toggle matSuffix [for]="pickerDep"></mat-datepicker-toggle>
+    <mat-datepicker #pickerDep>
+    </mat-datepicker>
+  </mat-form-field>
+  <mat-form-field>
+    <input 
+      matInput
+      [matDatepicker]="pickerArr"
+      placeholder="Return Date"
+      [min]="minDate"
+      [max]="maxDate"
+      ngModel
+      name="arrivalDate"
+      required>
+    <mat-datepicker-toggle matSuffix [for]="pickerArr"></mat-datepicker-toggle>
+    <mat-datepicker #pickerArr>
+    </mat-datepicker>
+  </mat-form-field>
+  <button 
+  type="submit" 
+  mat-raised-button 
+  color="primary"
+  [disabled]="f.invalid">Add</button>   
   </form>
 </section>

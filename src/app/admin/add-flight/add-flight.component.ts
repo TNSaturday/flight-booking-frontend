@@ -8,14 +8,18 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./add-flight.component.scss']
 })
 export class AddFlightComponent implements OnInit {
-
+  privileges = ['Economy', 'Business'];
+  today = new Date();
+  halfYear = new Date(this.today.getTime() + 180 * 24 * 60 * 60 * 1000);
+  minDate = this.today;
+  maxDate = this.halfYear;
   constructor(private flightService: FlightService) { }
 
   ngOnInit() {
   }
 
-  onSubmit() {
-    // this.flightService.addFlight(form: NgForm);
+  onSubmit(form: NgForm) {
+    console.log(form.value);
   }
 
 }
