@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Flight } from './flight.model';
-import { flights } from '../flights/flight.data';
 
 interface DeparturesFromCity {
   departure: string;

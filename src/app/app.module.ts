@@ -43,7 +43,7 @@ import { AddCompanyComponent } from './admin/add-company/add-company.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
