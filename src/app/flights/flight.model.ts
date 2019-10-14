@@ -1,20 +1,18 @@
-export class Flight {
-  constructor(
-    public id: number,
-    public company: string,
-    public name: string,
-    public price: number,
-    public seatsTotal: number,
-    public seatsFree: number,
-    public duration: number,
-    public depCity: string,
-    public depCode: string,
-    public depTime: Date,
-    public arrCity: string,
-    public arrCode: string,
-    public arrTime: Date,
-    public transfers: number
-  ) { }
+export interface Flight {
+  id: number;
+  company: string;
+  name: string;
+  price: number;
+  seatsTotal: number;
+  seatsFree: number;
+  duration: number;
+  depCity: string;
+  depCode: string;
+  depTime: Date;
+  arrCity: string;
+  arrCode: string;
+  arrTime: Date;
+  transfers: number;
 }
 
 export interface SearchFlightForm {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { Flight } from '../flights/flight.model';
 
@@ -10,21 +11,23 @@ import { Flight } from '../flights/flight.model';
   styleUrls: ['./obs-test.component.scss']
 })
 export class ObsTestComponent implements OnInit {
+  private flights: Flight[];
   private flightsUrl = 'http://www.flight-api.ru/flights';
+
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    const flights = this.getFlights();
-    const flightsObserver = {
-      next: flight => console.log(flight),
-      error: msg =>  console.log('Error: ', msg),
-      complete: () => console.log('Finish!')
-    };
-    flights.subscribe(flightsObserver);
+    this.getFlights();
   }
 
-  getFlights(): Observable<Flight[]> {
+  getFlights(): void {
+    this.getFlightsService()
+      .subscribe(data => {
+        this.flights = data;
+      });
+  }
+
+  getFlightsService(): Observable<Flight[]> {
     return this.http.get<Flight[]>(this.flightsUrl);
   }
-
 }
