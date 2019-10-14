@@ -20,6 +20,7 @@ import { AdminComponent } from './admin/admin.component';
 import { AuthService } from './auth/auth.service';
 import { AddFlightComponent } from './admin/add-flight/add-flight.component';
 import { AddCompanyComponent } from './admin/add-company/add-company.component';
+import { ObsTestComponent } from './obs-test/obs-test.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { AddCompanyComponent } from './admin/add-company/add-company.component';
     AdminComponent,
     AddFlightComponent,
     AddCompanyComponent,
+    ObsTestComponent,
   ],
   imports: [
     BrowserModule,
