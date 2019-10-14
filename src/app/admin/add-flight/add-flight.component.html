@@ -46,6 +46,19 @@
           </mat-error>
         </mat-form-field>
         <mat-form-field>
+          <input 
+            type="text" 
+            matInput 
+            placeholder="Seats Total"
+            ngModel
+            name="seatsTotal"
+            required
+            #seatsTotalInput="ngModel">
+          <mat-error *ngIf="seatsTotalInput.hasError('required')">
+            Field can not be empty!
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
         <input 
           type="text" 
           matInput 

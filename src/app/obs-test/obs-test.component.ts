@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { from } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+import { Flight } from '../flights/flight.model';
 
 @Component({
   selector: 'app-obs-test',
@@ -7,21 +10,21 @@ import { from } from 'rxjs';
   styleUrls: ['./obs-test.component.scss']
 })
 export class ObsTestComponent implements OnInit {
-
-  constructor() { }
+  private flightsUrl = 'http://www.flight-api.ru/flights';
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.getFlights();
+    const flights = this.getFlights();
+    const flightsObserver = {
+      next: flight => console.log(flight),
+      error: msg =>  console.log('Error: ', msg),
+      complete: () => console.log('Finish!')
+    };
+    flights.subscribe(flightsObserver);
   }
 
-  getFlights() {
-    const flights = from(fetch('http://www.flight-api.ru/flights'));
-
-    flights.subscribe({
-      next(response) { console.log(response); },
-      error(err) { console.log(err); },
-      complete() { console.log('Complete!'); }
-    });
+  getFlights(): Observable<Flight[]> {
+    return this.http.get<Flight[]>(this.flightsUrl);
   }
 
 }

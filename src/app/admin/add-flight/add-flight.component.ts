@@ -29,6 +29,8 @@ export class AddFlightComponent implements OnInit {
     const company = addForm.company;
     const name = addForm.name;
     const price = addForm.price;
+    const seatsTotal = addForm.seatsTotal;
+    const seatsFree = seatsTotal;
     const from = addForm.from;
     const fromCode = this.flightService.getCityCode(from);
     const to = addForm.to;
@@ -51,9 +53,10 @@ export class AddFlightComponent implements OnInit {
     );
     const diffMs = arrTime.getTime() - depTime.getTime();
     const duration = diffMs / 60000;
+    const transfers = 0;
     const flight = new Flight(
-      id, company, name, price, duration, from, fromCode,
-      depTime, to, toCode, arrTime);
+      id, company, name, price, seatsTotal, seatsFree, duration, from, fromCode,
+      depTime, to, toCode, arrTime, transfers);
     console.log(flight);
   }
 

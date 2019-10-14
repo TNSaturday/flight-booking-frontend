@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Flight } from '../flights/flight.model';
-import { flights } from '../flights/flight.data';
 import { Router } from '@angular/router';
 import { FlightService } from '../flights/flight.service';
 
