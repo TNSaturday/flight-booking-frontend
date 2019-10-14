@@ -54,10 +54,7 @@ export class AddFlightComponent implements OnInit {
     const diffMs = arrTime.getTime() - depTime.getTime();
     const duration = diffMs / 60000;
     const transfers = 0;
-    const flight = new Flight(
-      id, company, name, price, seatsTotal, seatsFree, duration, from, fromCode,
-      depTime, to, toCode, arrTime, transfers);
-    console.log(flight);
+    // TODO: make post to the flights table
   }
 
 }
