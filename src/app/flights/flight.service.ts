@@ -62,8 +62,10 @@ export class FlightService {
     return this.selectedFlight;
   }
 
-  getFlights(): Flight[] {
-    return this.flights;
+  async getFlights() {
+    const data = await fetch('http://www.flight-api.ru/flights');
+    const myJson = await data.json();
+    this.flights = myJson;
   }
 
   getFlightRoute(): IRoute[] {
@@ -71,6 +73,7 @@ export class FlightService {
   }
 
   performSearch(dep, arr, day): Flight[] {
+    this.getFlights();
     this.searchResults = this.flights.filter(el => {
       return (el.depCode === dep)
         && (el.arrCode === arr)

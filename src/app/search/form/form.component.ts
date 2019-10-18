@@ -24,7 +24,9 @@ export class FormComponent implements OnInit {
   onSubmit(form: NgForm) {
     const searchForm = form.value as SearchFlightForm;
     this.flightService.clearState();
-    this.flights = this.flightService.getRoute(searchForm);
-    this.router.navigate(['flights']);
+    this.flightService.getFlights();
+    // this.flights = this.flightService.getRoute(searchForm);
+    // this.router.navigate(['flights']);
+    console.log(this.flights);
   }
 }
